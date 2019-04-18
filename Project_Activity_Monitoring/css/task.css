@@ -1,0 +1,13 @@
+body{
+    background-color: #3f729b;
+}
+
+
+.report {
+    width: 24em;
+    height: 18em;
+}
+
+.task_block {
+    display: inline;
+}
