@@ -8,4 +8,12 @@
         <h2>{{ project.title }}</h2>
         <p>{{ project.description |linebreaksbr }}</p>
     </div>
+    <div class="tasks">
+        <h1>Tasks</h1>
+        {% for task in tasks %}
+            <div class="task">
+                <h2>&#9737;{{ task.title }}</h2>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
