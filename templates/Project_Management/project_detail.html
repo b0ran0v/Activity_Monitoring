@@ -1,0 +1,11 @@
+{% extends 'Project_Management/base.html' %}
+
+{% block content %}
+    <div class="project">
+        {% if project.date_created %}
+            <div class="date">{{ project.date_created }}</div>
+        {% endif %}
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description |linebreaksbr }}</p>
+    </div>
+{% endblock %}

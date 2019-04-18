@@ -1,18 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<br lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Management Page</title>
-    <link rel="stylesheet" href="{% static 'css/project_list.css' %}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-</head>
-    <h1>Projects</h1>
+{% extends 'Project_Management/base.html' %}
+
+{% block content %}
+    <h1>My Projects</h1>
+    </br></br>
     {% for project in projects %}
-        <h3><a href="">{{ project.title }}</a></h3>
-        <h5>Created date: {{ project.date_created}}</h5>
-        </br>
+        <div class="project">
+            <h2>&#9737; <a href="{% url 'project_detail' pk=project.pk %}">{{ project.title }}</a></h2>
+            <a>{{ project.date_created }}</a>
+        </div>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
