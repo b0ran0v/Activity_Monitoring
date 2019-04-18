@@ -3,10 +3,17 @@
 {% block content %}
     <div class="project">
         {% if project.date_created %}
-            <div class="date">{{ project.date_created }}</div>
+            <div class="date">Created Date: {{ project.date_created }}</div>
         {% endif %}
         <h2>{{ project.title }}</h2>
+        </br>
+        <p>Project Description:</p>
         <p>{{ project.description |linebreaksbr }}</p>
+        </br>
+        <p>Progress:</p>
+        <div class="progress md-progress" style="height: 20px">
+            <div class="progress-bar" role="progressbar" style="width: {{ progress }}%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
+        </div>
     </div>
     <div class="tasks">
         <h1>Tasks</h1>

@@ -10,5 +10,8 @@ def project_list(request):
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)
     tasks = Task.objects.all().filter(project=project)
-    return render(request, 'Project_Management/project_detail.html', {'project': project, 'tasks': tasks})
+    tasks_finished = Task.objects.all().filter(project=project, is_finished=True)
+    progress = (float(tasks_finished.count())/tasks.count())*100
+    return render(request, 'Project_Management/project_detail.html',
+                  {'project': project, 'tasks': tasks, 'progress': progress})
 
