@@ -19,7 +19,7 @@
         <h1>Tasks</h1>
         {% for task in tasks %}
             <div class="task">
-                <h2>&#9737;{{ task.title }}</h2>
+                <h2>&#9737;<a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a></h2>
             </div>
         {% endfor %}
     </div>

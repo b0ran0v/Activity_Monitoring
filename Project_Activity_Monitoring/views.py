@@ -15,3 +15,10 @@ def project_detail(request, pk):
     return render(request, 'Project_Management/project_detail.html',
                   {'project': project, 'tasks': tasks, 'progress': progress})
 
+
+def task_detail(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'Project_Management/task_detail.html', {'task': task})
+
+
+

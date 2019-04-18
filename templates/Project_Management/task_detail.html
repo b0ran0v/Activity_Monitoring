@@ -1,0 +1,15 @@
+{% extends 'Project_Management/base.html' %}
+
+{% block content %}
+    <div class="project">
+        {% if task.date_assigned %}
+            <div class="date">Assigned Date: {{ task.date_assigned }}</div>
+            <div class="date">Assigned to: {{ task.developer }}</div>
+        {% endif %}
+        <h2>{{ task.title }}</h2>
+        </br>
+        <p>Task Description:</p>
+        <p>{{ task.description |linebreaksbr }}</p>
+        </br>
+    </div>
+{% endblock %}
