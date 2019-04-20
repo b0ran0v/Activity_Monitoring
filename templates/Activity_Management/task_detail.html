@@ -10,6 +10,15 @@
         </br>
         <p>Task Description:</p>
         <p>{{ task.description |linebreaksbr }}</p>
+        <p>
+            {% if is_manager == False %}
+                {% if task.is_finished == False %}
+                    <a href='{% url 'task_finish' pk=task.pk %}'>Finish</a>
+                {% elif task.is_finished == True %}
+                    <a href='{% url 'task_finish' pk=task.pk %}'>Undo</a>
+                {% endif %}
+            {% endif %}
+        </p>
         </br>
     </div>
 {% endblock %}

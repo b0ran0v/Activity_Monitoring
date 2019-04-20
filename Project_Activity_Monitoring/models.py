@@ -9,8 +9,9 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
-    project_manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                        blank=True, null=True)
+    project_manager = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                        limit_choices_to={'groups__name': "Manager"},
+                                        on_delete=models.CASCADE, blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
     is_finished = models.BooleanField(default=False)
 
@@ -20,7 +21,9 @@ class Project(models.Model):
 
 class Task(FieldPermissionModelMixin, models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    developer = models.ForeignKey(settings.AUTH_USER_MODEL, limit_choices_to={'groups__name': "Developer"}, on_delete=models.CASCADE,
+    developer = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                  limit_choices_to={'groups__name': "Developer"},
+                                  on_delete=models.CASCADE,
                                   blank=True, null=True)
     title = models.CharField(max_length=50)
     description = models.TextField()

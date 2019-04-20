@@ -3,6 +3,7 @@
 {% block content %}
     <h1>My Projects</h1>
     </br></br>
+    <a style="color: black" href="{% url 'project_new' %}" class="top-menu">New Project</a>
     {% for project in projects %}
         <div class="project">
             <h2>&#9737; <a href="{% url 'project_detail' pk=project.pk %}">{{ project.title }}</a></h2>

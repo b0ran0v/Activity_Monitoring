@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Management Page</title>
+        <title>Project Activity Monitoring</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -10,10 +10,19 @@
     <body>
         <div class="page-header">
             <h1><a href="/">Project Activity Monitoring</a></h1>
+            {% if user.is_authenticated %}
+                <a class="top-menu"class>{{ user.username }}</a>
+                <a href="{% url 'logout' %}">Log out</a>
+            {% endif %}
         </div>
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
+                {% if is_manager %}
+                    <h2>&#9737; <a href="{% url 'project_list'%}">Projects</a></h2>
+                {% elif is_manager == False %}
+                    <h2>&#9737; <a href="{% url 'task_list'%}">Tasks</a></h2>
+                {% endif %}
                 {% block content %}
                 {% endblock %}
                 </div>

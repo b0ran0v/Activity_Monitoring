@@ -1,0 +1,20 @@
+{% extends 'Project_Management/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="login-box">
+      <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+          <div class="row">
+            <div class="col-xs-4">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
